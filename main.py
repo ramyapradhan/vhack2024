@@ -16,7 +16,7 @@ def send_message(user_input):
     
     # Make the API call
     response = openai.ChatCompletion.create(
-        model="gpt-4o-mini",  # Or gpt-3.5-turbo
+        model="gpt-4o",
         messages=conversation_history,
         temperature=1.0,
         top_p=1.0,
@@ -36,7 +36,7 @@ def send_message(user_input):
     # Return the assistant's reply
     return formatted_output
 
-print("Assistant: Hello! How can I help you today?")
+print("FestivAI: Hello! How can I help you today?")
 while True:
     user_message = input("You: ")
     if user_message.lower() in ["exit", "quit", "bye"]:
