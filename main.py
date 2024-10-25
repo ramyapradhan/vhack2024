@@ -1,7 +1,7 @@
 import openai
 import re
 
-openai.api_key = "addkeyhere"
+openai.api_key = "your-api-key"  # Replace with your OpenAI API key
 
 # Initialize the conversation history
 conversation_history = [
