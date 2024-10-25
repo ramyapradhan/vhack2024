@@ -42,4 +42,4 @@ while True:
     if user_message.lower() in ["exit", "quit", "bye"]:
         break
     assistant_reply = send_message(user_message)
-    print(f"Assistant: {assistant_reply}")
+    print(f"FestivAI: {assistant_reply}")
