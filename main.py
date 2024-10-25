@@ -1,7 +1,9 @@
 import openai
+import re
 
-openai.api_key = "addKeyHere"
+openai.api_key = "addkeyhere"
 
+# Initialize the conversation history
 conversation_history = [
     {"role": "system", "content": "You help people plan events. Take in their theme preference, event type, food preference, number of guests, budget, date of event. Give place where theme stuff can be bought, where party can be hosted, invitation theme suggestions, where food can be ordered. Be professional."}
 ]
@@ -14,7 +16,7 @@ def send_message(user_input):
     
     # Make the API call
     response = openai.ChatCompletion.create(
-        model="gpt-4",  # Or gpt-3.5-turbo
+        model="gpt-4o-mini",  # Or gpt-3.5-turbo
         messages=conversation_history,
         temperature=1.0,
         top_p=1.0,
@@ -27,9 +29,12 @@ def send_message(user_input):
     
     # Add the assistant's reply to the conversation history
     conversation_history.append({"role": "assistant", "content": assistant_reply})
+
+    # Remove '###' and '**'
+    formatted_output = re.sub(r'### |[*]{2}', '', assistant_reply)
     
     # Return the assistant's reply
-    return assistant_reply
+    return formatted_output
 
 print("Assistant: Hello! How can I help you today?")
 while True:
